@@ -1,0 +1,85 @@
+<div>
+  <button mat-icon-button aria-label="addNoteButton" (click)="createNote()">
+    <mat-icon>add_circle_rounded</mat-icon>
+    </button> <h2 style="display: inline-block;"> Add a Note</h2>
+    <div class="grid">
+      <form><mat-card class="card inputCard">
+      <mat-card-header>
+      <mat-card-title><mat-form-field>
+      <mat-label>Note Title</mat-label>
+      <input matInput type="text" [(ngModel)]="noteTitle" [ngModelOptions]="{standalone:true}" placeholder="Enter note title">
+      </mat-form-field></mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+      <mat-form-field>
+      <mat-label>Note Content</mat-label>
+      <textarea matInput rows="5" [(ngModel)]="noteContent" [ngModelOptions]="{standalone:true}" placeholder="Enter note content"></textarea>
+      </mat-form-field>
+      </mat-card-content>
+      <mat-divider></mat-divider>
+      <mat-card-actions>
+      <mat-select [(ngModel)]="lane" [ngModelOptions]="{standalone:true}" placeholder="Select status">
+      <mat-option value="1">To Do</mat-option>
+      <mat-option value="2">In Progress</mat-option>
+      <mat-option value="3">Done</mat-option>
+      </mat-select>
+      <button mat-raised-button type="submit" (click)="addNoteButton()">Submit</button>
+      </mat-card-actions>
+      </mat-card>
+      </form>
+      </div>
+</div>
+<br><br><br>
+<div class="grid">
+  <div class="column" >
+    <h3>To Do</h3>
+      <ul *ngFor="let note of getToDos(notes)">
+        <mat-card class="card toDo">
+          <mat-card-header>
+            <mat-card-title>{{note.noteTitle}}</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>{{note.noteContent}}
+            <mat-divider></mat-divider>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button (click)="setUpdate(note)">Modify</button>
+            <button mat-button (click)="setDelete(note)">Delete</button>
+          </mat-card-actions>
+        </mat-card>
+      </ul>
+  </div>
+  <div class="column">
+    <h3>In Progress</h3>
+      <ul *ngFor="let note of getInProgress(notes)">
+        <mat-card class="card inProgress">
+          <mat-card-header>
+            <mat-card-title>{{note.noteTitle}}</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>{{note.noteContent}}
+            <mat-divider></mat-divider>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button (click)="setUpdate(note)">Modify</button>
+            <button mat-button (click)="setDelete(note)">Delete</button>
+          </mat-card-actions>
+        </mat-card>
+      </ul>
+  </div>
+  <div class="column">
+    <h3>Done</h3>
+    <ul *ngFor="let note of getDone(notes)">
+      <mat-card class="card Done">
+        <mat-card-header>
+          <mat-card-title>{{note.noteTitle}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>{{note.noteContent}}
+          <mat-divider></mat-divider>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button (click)="setUpdate(note)">Modify</button>
+          <button mat-button (click)="setDelete(note)">Delete</button>
+        </mat-card-actions>
+      </mat-card>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+.card {
+    max-width: 400px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+  }
+  .grid {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .column {
+    width: 33%;
+    border: 1px solid black;
+    padding: 10px;
+  }
+
+.toDo{
+  background-color:#ffeb3b
+}
+.inProgress{
+  background-color:#c6ff00 
+}
+.Done{
+  background-color: #0277bd;
+}
+.inputCard{
+  background-color: chocolate;
+}
